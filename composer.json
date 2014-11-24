@@ -1,0 +1,11 @@
+{
+    "name": "alfonso/acf-button-field",
+    "authors": [
+        {
+            "name": "Alfonso Filho",
+            "email": "alfonso@maubez.com"
+        }
+    ],
+    "version": "1.0.1",
+    "require": {}
+}
