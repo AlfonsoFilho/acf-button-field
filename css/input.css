@@ -1,18 +1,18 @@
-.acf-button .hidden{
+.acf-custom-button .hidden{
   display: none;
 }
 
-.acf-button td{
+.acf-custom-button td{
   padding-right: 10px;
 }
 
-.acf-button label{
+.acf-custom-button label{
   padding-bottom: 5px;
   color: #999;
   display: block;
 }
 
-.acf-button .switch{
+.acf-custom-button .switch{
   margin-top: 20px;
   margin-bottom: 0;
 }

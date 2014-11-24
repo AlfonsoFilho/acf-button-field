@@ -5,7 +5,7 @@ class acf_field_button extends acf_field
 	// vars
 	var $settings,
 			$defaults;
-		
+
 	/*
 	*  __construct
 	*
@@ -14,7 +14,7 @@ class acf_field_button extends acf_field
 	*  @since	3.6
 	*  @date	23/01/13
 	*/
-	
+
 	function __construct()
 	{
 		// vars
@@ -22,12 +22,12 @@ class acf_field_button extends acf_field
 		$this->label = __('Button');
 		$this->category = __("Basic",'acf'); // Basic, Content, Choice, etc
 		$this->defaults = array();
-		
+
 		// do not delete!
-    parent::__construct();
-    	
-    	
-    // settings
+    	parent::__construct();
+
+
+    	// settings
 		$this->settings = array(
 			'path' => apply_filters('acf/helpers/get_path', __FILE__),
 			'dir' => apply_filters('acf/helpers/get_dir', __FILE__),
@@ -35,8 +35,8 @@ class acf_field_button extends acf_field
 		);
 
 	}
-	
-	
+
+
 	/*
 	*  create_options()
 	*
@@ -49,21 +49,21 @@ class acf_field_button extends acf_field
 	*
 	*  @param	$field	- an array holding all the field's data
 	*/
-	
+
 	function create_options( $field )
 	{
 		// defaults?
 		$field = array_merge($this->defaults, $field);
-		
+
 		// key is needed in the field names to correctly save the data
 		$key = $field['name'];
-		
-		
+
+
 		// Create Field Options HTML
-		
+
 	}
-	
-	
+
+
 	/*
 	*  create_field()
 	*
@@ -75,11 +75,11 @@ class acf_field_button extends acf_field
 	*  @since	3.6
 	*  @date	23/01/13
 	*/
-	
+
 	function create_field( $field )
 	{
 
-		$field = array_merge($this->defaults, $field); 
+		$field = array_merge($this->defaults, $field);
 
 		$field_name = esc_attr( $field['name'] );
 
@@ -90,7 +90,7 @@ class acf_field_button extends acf_field
 
 		?>
 
-		<table class="acf-button">
+		<table class="acf-custom-button">
 			<tr>
 				<td valign="top">
 					<label>Text</label>
@@ -118,8 +118,8 @@ class acf_field_button extends acf_field
 
 		<?php
 	}
-	
-	
+
+
 	/*
 	*  input_admin_enqueue_scripts()
 	*
@@ -135,26 +135,26 @@ class acf_field_button extends acf_field
 	function input_admin_enqueue_scripts()
 	{
 		// Note: This function can be removed if not used
-		
-		
+
+
 		// register acf scripts
 		wp_register_script( 'acf-input-button', $this->settings['dir'] . 'js/input.js', array('acf-input'), $this->settings['version'] );
-		wp_register_style( 'acf-input-button', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version'] ); 
-		
-		
+		wp_register_style( 'acf-input-button', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version'] );
+
+
 		// scripts
 		wp_enqueue_script(array(
-			'acf-input-button',	
+			'acf-input-button',
 		));
 
 		// styles
 		wp_enqueue_style(array(
-			'acf-input-button',	
+			'acf-input-button',
 		));
-		
-		
+
+
 	}
-	
+
 	/*
 	*  format_value_for_api()
 	*
@@ -170,7 +170,7 @@ class acf_field_button extends acf_field
 	*
 	*  @return	$value	- the modified value
 	*/
-	
+
 	function format_value_for_api( $value, $post_id, $field )
 	{
 
@@ -182,12 +182,12 @@ class acf_field_button extends acf_field
 		$target = $use_internal ? null : ' target="_blank"';
 		$link = $use_internal ? get_permalink($button['page_id']) : $button['link'];
 
-		$value = '<a href="' . $link .'"' . $target . '>' . $button['text'] . '</a>';
+		$value = '<a href="' . $link .'"' . $target . ' class="btn">' . $button['text'] . '</a>';
 
 		return $value;
 
 	}
-	
+
 }
 
 new acf_field_button();
